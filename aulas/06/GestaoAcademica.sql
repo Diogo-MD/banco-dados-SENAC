@@ -1,0 +1,38 @@
+-- -- CREATE TABLE Curso (
+-- --     ID INT PRIMARY KEY,
+-- --     Nome VARCHAR (100)
+-- -- );
+
+-- -- CREATE TABLE Disciplina (
+-- --     Id INT PRIMARY KEY,
+-- --     Nome VARCHAR (255),
+-- --     Creditos INT
+-- -- );
+
+-- -- CREATE TABLE Professor (
+-- --     Id INT PRIMARY KEY,
+-- --     Nome VARCHAR (100),
+-- --     Especializacao VARCHAR (50)
+-- -- );
+
+-- -- CREATE TABLE Aluno (
+-- --     Matricula INT PRIMARY KEY,
+-- --     Nome VARCHAR (100)
+-- -- );  
+
+CREATE TABLE IF NOT EXISTS Matricula (
+    Aluno_ID INT,
+    Curso_ID INT,
+    Data_Matricula DATE,
+    PRIMARY KEY (Aluno_ID, Curso_ID) 
+    FOREIGN KEY (Aluno_ID) REFERENCES Aluno (Matricula),
+    FOREIGN KEY (Curso_ID) REFERENCES Curso (Id)
+);
+
+CREATE TABLE IF NOT EXISTS Professor_Disciplina (
+
+);
+
+CREATE TABLE Disciplina_Curso (
+
+);
