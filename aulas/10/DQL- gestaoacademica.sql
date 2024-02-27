@@ -48,3 +48,9 @@ WHERE horas > 40;
 SELECT COUNT(*) AS QuantidadeDeMatriculas
 FROM matricula
 WHERE curso_ID = 2;
+
+-- Exemplo: Selecionar professor com especialização que envolva tecnologia
+
+SELECT *
+FROM professor
+WHERE especializacao LIKE '%Tecnologia%'
