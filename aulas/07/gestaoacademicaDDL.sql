@@ -49,7 +49,32 @@ CREATE TABLE IF NOT EXISTS Professor_Disciplina(
 CREATE TABLE IF NOT EXISTS Disciplina_Curso(
     Disciplina_ID INT,
     Curso_ID INT,
-    PRIMARY KEY(Disciplina_ID, Curso_ID)
+    PRIMARY KEY(Disciplina_ID, Curso_ID),
     FOREIGN KEY (Disciplina_ID) REFERENCES Disciplina(Id),
     FOREIGN KEY (Curso_ID) REFERENCES Curso(Id)
 );
+
+-- DDL ADD COLUMN
+ALTER TABLE professor
+	ADD carga_horaria INT NOT NULL;
+    
+ALTER TABLE aluno
+	ADD cpf VARCHAR(11) NOT NULL UNIQUE;
+
+SELECT * FROM aluno;
+
+-- DDL DROP COLUMN
+ALTER TABLE professor
+	DROP COLUMN carga_horaria;
+    
+-- DDL CHANGE COLUMN
+ALTER TABLE disciplina
+	CHANGE creditos credito INT NOT NULL;
+
+-- Altere a coluna aluno.nome para um varchar de 50 caracteres, não nulo
+ALTER TABLE aluno
+	CHANGE nome nome VARCHAR(50) NOT NULL;
+
+-- Altere a coluna disciplina.credito para "Horas" não nulo
+ALTER TABLE disciplina
+	CHANGE credito Horas INT NOT NULL;
