@@ -38,5 +38,13 @@ WHERE ID > 2 AND ID <6
 ORDER BY nome;
 
 -- Exemplo; Contar quantas disciplinas existem
-SELECT * 
-FROM disciplina;
+
+SELECT COUNT(*) AS QuantidadeDeDisciplinas
+FROM disciplina
+WHERE horas > 40;
+
+-- Me informe quantas matriculas foram feitas no curso de ID 2
+
+SELECT COUNT(*) AS QuantidadeDeMatriculas
+FROM matricula
+WHERE curso_ID = 2;
