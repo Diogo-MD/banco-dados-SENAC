@@ -20,7 +20,9 @@ O projeto segue a estrutura abaixo, com cada aula em um diretório específico:
  - [Dado x Conhecimento x Informação](https://www.estrategiaconcursos.com.br/blog/dado-informacao-conhecimento-inteligencia/#): Artigo pontuando a diferença entre os conceitos.
  - [Diagramas ER](https://www.lucidchart.com/pages/pt/o-que-e-diagrama-entidade-relacionamento): Artigo que aborda o uso de diagramas ER em seus modelos conceitual, lógico e físico.
  - [Modelo Conceitual x Lógico x Físico](https://pt.stackoverflow.com/questions/294699/qual-a-diferen%C3%A7a-entre-modelagem-conceitual-l%C3%B3gica-e-f%C3%ADsica): Aprofundamento dos diferentes modelos de diagramas ER.
+ - [Roadmap SQL](https://roadmap.sh/sql): Roadmap indicando uma trilha de estudos em SQL.
+ - [Normalização de Dados](https://learn.microsoft.com/pt-br/office/troubleshoot/access/database-normalization-description): Demonstração de aplicação das formas normais em banco de dados.
+ - [Curso SQL Softblue](https://www.youtube.com/watch?v=eULtZfAcihQ&list=PLH_lE515NYR2yvvnkx4iEfUuf-xVkTYBw): Curso disponibilizado gratuitamente pela Softblue de banco de dados com MySQL
 
-**Diogo Madeira dos Santos**
 
 [Informática Para Internet - Senac São Paulo]
