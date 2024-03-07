@@ -2,45 +2,43 @@ CREATE DATABASE IF NOT EXISTS compras;
 
 USE compras;
 
-CREATE TABLE IF NOT EXISTS cliente (
-	id INT PRIMARY KEY AUTO_INCREMENT, 
-    nome VARCHAR (50) NOT NULL,
-    sobrenome VARCHAR (50) NOT NULL,
-    email VARCHAR (50) NOT NULL,
-    dataCriacao DATETIME DEFAULT CURRENT_TIMESTAMP,
-    dataAtualizacao DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    telefone VARCHAR (15) 
+CREATE TABLE IF NOT EXISTS Cliente (
+    ID INT PRIMARY KEY AUTO_INCREMENT,
+    Nome VARCHAR(50) NOT NULL,
+    Sobrenome VARCHAR(50) NOT NULL,
+    Email VARCHAR(50) NOT NULL,
+    DataCriacao DATETIME DEFAULT CURRENT_TIMESTAMP,
+    DataAtualizacao DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    Telefone VARCHAR(15)
 );
 
- CREATE TABLE IF NOT EXISTS produto (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR (50) NOT NULL,
-    preco DECIMAL (10, 2) CHECK (preco >= 0),
-    dataCriacao DATETIME DEFAULT CURRENT_TIMESTAMP,
-    dataAtualizacao DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    quantidade INT DEFAULT 0 CHECK (quantidade >= 0)
- );
- 
- CREATE TABLE IF NOT EXISTS pedido (
+CREATE TABLE IF NOT EXISTS Produto(
+    ID INT PRIMARY KEY AUTO_INCREMENT,
+    Nome VARCHAR(50) NOT NULL,
+    Preco DECIMAL(10, 2) CHECK (Preco >= 0),
+    Tipo ENUM('Eletrônico', 'Vestuário', 'Alimentício') NOT NULL,
+    DataCriacao DATETIME DEFAULT CURRENT_TIMESTAMP,
+    DataAtualizacao DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    Quantidade INT DEFAULT 0 CHECK (Quantidade >= 0)
+);
+
+CREATE TABLE IF NOT EXISTS pedido (
 	id INT PRIMARY KEY AUTO_INCREMENT,
     clienteId INT NOT NULL,
     dataPedido DATE NOT NULL,
     FOREIGN KEY (clienteId) REFERENCES cliente (id)
- );
- 
- CREATE TABLE IF NOT EXISTS itensPedidos (
+);
+
+CREATE TABLE IF NOT EXISTS itensPedido (
 	pedidoId INT,
     produtoId INT,
     quantidade INT NOT NULL,
     PRIMARY KEY (pedidoId, produtoId),
     FOREIGN KEY (pedidoId) REFERENCES pedido(id),
     FOREIGN KEY (produtoId) REFERENCES produto(id)
- );
- 
- ALTER TABLE produto
- ADD COLUMN tipo ENUM('Eletrônico', 'Vestuário', 'Alimentício') NOT NULL;
- 
- -- Inserção de dados na tabela Produto
+);
+
+-- Inserção de dados na tabela Produto
 INSERT INTO Produto (Nome, Preco, Tipo, Quantidade) VALUES
     ('Monitor', 400.00, 'Eletrônico', 5),
     ('Mouse', 30.00, 'Eletrônico', 20),
@@ -78,7 +76,7 @@ INSERT INTO Pedido (ClienteID, DataPedido) VALUES
     (6, '2024-03-06');
     
 -- Inserção de dados na tabela ItensPedido
-INSERT INTO ItensPedidos (PedidoID, ProdutoID, Quantidade) VALUES
+INSERT INTO ItensPedido (PedidoID, ProdutoID, Quantidade) VALUES
     (1, 1, 2),
     (1, 2, 5),
     (2, 3, 10),
@@ -91,4 +89,3 @@ INSERT INTO ItensPedidos (PedidoID, ProdutoID, Quantidade) VALUES
     (8, 1, 1),
     (9, 4, 5),
     (10, 2, 3);
- 
