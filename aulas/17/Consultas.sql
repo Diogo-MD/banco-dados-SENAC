@@ -32,4 +32,4 @@ use hotel;
 	SELECT *
     FROM item
     WHERE descricaoItem LIKE '%de%'
-    LIMIT 1000 OFFSET 2;
+    LIMIT 999 OFFSET 2;
