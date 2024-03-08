@@ -34,34 +34,32 @@ use hotel;
     WHERE descricaoItem LIKE '%de%'	
     LIMIT 999 OFFSET 2;
     
-    
     # Consultas com JOINS
-
 -- Selecioar detalhes da hospedagem, incluindo informações do cliente
-	SELECT *
-    FROM hospedagem
-    JOIN cliente ON hospedagem.codcliente = cliente.codcliente;
-    
--- Selecionar chalés com os itens associados
+SELECT Hospedagem.*, Cliente.nomeCliente
+FROM Hospedagem
+JOIN Cliente ON Hospedagem.codCliente = Cliente.codCliente;
 
-	SELECT *
-    FROM chale 
-    JOIN chale_item ON chale.codChale = chale_item.codchale;
+-- Selecionar chalés com os itens associados
+SELECT Chale.*, Item.nomeItem AS Itens
+FROM Chale
+LEFT JOIN chale_item ON Chale.codChale = chale_item.codChale
+LEFT JOIN item ON chale_item.nomeItem = item.nomeItem;
 
 -- Selecionar serviços utilizados em uma hospedagem
+SELECT Servico.*, hospedagem_servico.dataServico
+FROM hospedagem_servico
+INNER JOIN servico ON  hospedagem_servico.codServico = servico.codServico
+WHERE hospedagem_servico.codHospedagem = 1;
 
-	SELECT *
-    FROM servico
-	JOIN hospedagem_servico on servico.codServico = hospedagem_servico.codservico;
-	
 -- Consultar os clientes com seus telefones
+SELECT Cliente.*, GROUP_CONCAT(telefone.telefone) AS Telefone
+FROM Cliente
+LEFT JOIN Telefone ON Cliente.codCliente = Telefone.codCliente
+GROUP BY Cliente.codCliente;
 
-	SELECT * 
-    FROM telefone
-    JOIN cliente on telefone.codcliente = cliente.codcliente;
-    
 -- Selecionar chalés ocupados em uma data específica
-
-	SELECT *
-    FROM chale, hospedagem
-    JOIN hospedagem ON chale.
+SELECT Chale.*, hospedagem.dataInicio, hospedagem.dataFim
+FROM chale
+JOIN Hospedagem ON chale.codChale = hospedagem.codChale
+WHERE '2024-03-25' BETWEEN hospedagem.dataInicio AND hospedagem.dataFim;
