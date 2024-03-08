@@ -31,5 +31,37 @@ use hotel;
 
 	SELECT *
     FROM item
-    WHERE descricaoItem LIKE '%de%'
+    WHERE descricaoItem LIKE '%de%'	
     LIMIT 999 OFFSET 2;
+    
+    
+    # Consultas com JOINS
+
+-- Selecioar detalhes da hospedagem, incluindo informações do cliente
+	SELECT *
+    FROM hospedagem
+    JOIN cliente ON hospedagem.codcliente = cliente.codcliente;
+    
+-- Selecionar chalés com os itens associados
+
+	SELECT *
+    FROM chale 
+    JOIN chale_item ON chale.codChale = chale_item.codchale;
+
+-- Selecionar serviços utilizados em uma hospedagem
+
+	SELECT *
+    FROM servico
+	JOIN hospedagem_servico on servico.codServico = hospedagem_servico.codservico;
+	
+-- Consultar os clientes com seus telefones
+
+	SELECT * 
+    FROM telefone
+    JOIN cliente on telefone.codcliente = cliente.codcliente;
+    
+-- Selecionar chalés ocupados em uma data específica
+
+	SELECT *
+    FROM chale, hospedagem
+    JOIN hospedagem ON chale.
