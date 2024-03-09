@@ -35,10 +35,15 @@ GROUP BY codChale;
 	
     SELECT * FROM hospedagem;
     
-    CREATE VIEW ViewHospedagemDadosClientes AS
-	SELECT Cliente.*, GROUP_CONCAT(telefone.telefone) AS Telefone
-	FROM Cliente
-	LEFT JOIN Telefone ON Cliente.codCliente = Telefone.codCliente
-	GROUP BY Cliente.codCliente;
+    DROP VIEW ViewHospedagemDadosClientes;
     
-    SELECT * FROM ViewHospedagemDadosClientes
+    CREATE VIEW ViewHospedagemDadosClientes AS
+	SELECT Hospedagem.*, cliente.nomeCliente, telefone.telefone
+	FROM hospedagem
+    LEFT JOIN cliente ON hospedagem.codCliente = cliente.codCliente
+	INNER JOIN telefone ON cliente.codCliente = telefone.codCliente;
+
+    
+    SELECT * FROM ViewHospedagemDadosClientes;
+    
+    
